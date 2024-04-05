@@ -1,0 +1,320 @@
+﻿@page "/userprofile/{id}"
+@model UserProfile
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="shortcut icon" href="~/images/free-icon-font-user-3917688.png" type="image/png">
+    <link rel="stylesheet" href="~/profile/profile.css"/>
+</head>
+<body>
+    <div class="error-box">
+        <div class="error-menu">
+            <div class="error-message">Error</div>
+            <button class="error-btn">OK</button>
+        </div>
+    </div>
+    <div class="image-box">
+        <button class="closer">close</button>
+        <img class="full-image large-img" alt="">
+    </div>
+    <header>
+        <div class="topbar">
+            <div class="actions">
+                <div class="sub-form">
+                    <form asp-page="userprofile" method="post">
+                        <input type="hidden" asp-for="IsSubscribe" value="true">
+                        @if (Model.SelectedUser.Subscribers.Where(s => s.SubId == Model.CurrentUser.Id).Count() != 0)
+                        {
+                            <button style="background-color: rgb(221, 99, 99);" class="sub-btn" type="submit">
+                                UNSCRIBE
+                            </button>
+                        }
+                        else
+                        {
+                            <button class="sub-btn" type="submit">
+                                SUBSCRIBE
+                            </button>
+                        }
+                    </form>
+                    <form asp-page="userprofile" method="post">
+                        <input asp-for="IsLike" value="true" type="hidden">
+                        <button class="like-button">
+                            @if (Model.SelectedUser.Likes.Where(l => l.LikerId == Model.CurrentUser.Id).Count() != 0)
+                            {
+                                <img src="~/images/heart_like_love_twitter_icon_127132.png" liked="false" alt="">
+                            }
+                            else
+                            {
+                                <img src="~/images/hearts_heart_love_favorite_5565.png" liked="false" alt="">
+                            }
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <a href="/account" class="ref-home"><img src="~/images/free-icon-home-button-9073243.png" alt=""></a>
+
+        </div>
+        <div class="container">
+
+            <div class="user-data">
+                <div class="name-age">
+                    <span class="name">@Model.SelectedUser.Name,</span><span class="age">@Model.SelectedUser.Age</span>
+                </div>
+                <span class="city">@Model.SelectedUser.City</span>
+            </div>
+
+            <div class="slider">
+
+                <div class="sliderline">
+                    @if (Model.SelectedUser.Photos.Count() != 0)
+                    {
+                        foreach (Photo photo in Model.SelectedUser.Photos)
+                        {
+                            <img src="@photo.Path" class="slider-elem">
+                        }
+                    }
+                    else
+                    {
+                        <img src="~/images/free-icon-add-image-4211547.png" class="slider-elem">
+                    }
+                </div>
+
+                <div class="r-nav">
+                    <img src="~/images/angle-right.svg" alt="">
+                </div>
+                <div class="l-nav">
+                    <img src="~/images/angle-left.svg" alt="">
+                </div>
+            </div>
+
+            <div class="active-buttons">
+                <a href="/chatroom/@Model.SelectedUser.Id" class="m-btn">write message</a>
+            </div>
+
+        </div>
+    </header>
+    <section>
+        <div class="gallery">
+            <div class="title">
+                gallery
+            </div>
+            <div class="photos">
+                @if (Model.SelectedUser.Photos.Count() != 0)
+                {
+                    foreach (Photo photo in Model.SelectedUser.Photos)
+                    {
+                        <img class="gallery-img" src="@photo.Path">
+                    }
+                }
+            </div>
+        </div>
+    </section>
+
+    <script src="~/profile/profile.js"></script>
+</body>
+</html>
+
+
+@functions{
+    public class UserProfile : PageModel
+    {
+        private IUserRepository userRepository;
+
+        public UserProfile(IConfiguration configuration, IUserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; set; }
+
+        [BindProperty]
+        public User SelectedUser { get; set; }
+
+        [BindProperty]
+        public User CurrentUser { get; set; }
+
+        [BindProperty]
+        public bool IsLike { get; set; } = false;
+
+        [BindProperty]
+        public bool IsSubscribe { get; set; }
+
+        public async Task<IActionResult> OnGet(long id)
+        {
+            // string answer = await Sender.GetAsync($"{Configuration["UserService"]}/api/user/get/{id}");
+
+            // SelectedUser = JsonConvert.DeserializeObject<User>(answer);
+
+            SelectedUser = await userRepository.GetUserByIdAsync(id);
+
+            string name = User.Identity.Name;
+            string Email = User.FindFirst(ClaimTypes.Email).Value;
+
+            // Dictionary<string, string> content = new Dictionary<string, string>()
+            // {
+            //         {"Name", name },
+            //         {"Email", Email }
+            // };
+
+            // var answer2 = await Sender.PostAsync(content, $"{Configuration["UserService"]}/api/user/current/get");
+
+            // string jsonUser = await answer2.Content.ReadAsStringAsync();
+
+            // CurrentUser = JsonConvert.DeserializeObject<User>(jsonUser);
+
+            ClaimsUserModel claimsUser = new ClaimsUserModel()
+            {
+                Name = name,
+
+                Email = Email
+            };
+
+            CurrentUser = await userRepository.GetUserByNameAndEmailAsync(claimsUser);
+
+            TempData["selected"] = JsonConvert.SerializeObject(SelectedUser);
+
+            TempData["current"] = JsonConvert.SerializeObject(CurrentUser);
+
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            SelectedUser = JsonConvert.DeserializeObject<User>((string)TempData["selected"]);
+            CurrentUser = JsonConvert.DeserializeObject<User>((string)TempData["current"]);
+
+            if (IsLike)
+            {
+                // Dictionary<string, string> content = new Dictionary<string, string>()
+                // {
+                //         {"CurrentUserId", $"{CurrentUser.Id}" },
+                //         {"CurrentUserName", $"{CurrentUser.Name}" },
+                //         {"ReceiverId", $"{SelectedUser.Id}" }
+                // };
+
+                LikeModel likeModel = new LikeModel()
+                {
+                    CurrentUserId = CurrentUser.Id,
+
+                    CurrentUserName = CurrentUser.Name,
+
+                    ReceiverId = SelectedUser.Id
+                };
+
+                //var response = await Sender.PostAsync(content, $"{Configuration["UserService"]}/api/user/likes/add");
+
+                await userRepository.AddLikeAsync(likeModel);
+
+                string likeAnswer = string.Empty;
+
+                if (SelectedUser.Likes.Where(l=>l.LikerId == CurrentUser.Id).Count() == 0)
+                {
+                    likeAnswer = "liked";
+                }
+                else
+                {
+                    likeAnswer = "disliked";
+                }
+
+                Dictionary<string, string> content2 = new Dictionary<string, string>()
+                {
+                        {"CurrentUserId", $"{CurrentUser.Id}" },
+                        {"CurrentUserName", $"{CurrentUser.Name}" },
+                        {"Context", $"{DateTime.Now.ToString("d")}:  {CurrentUser.Name} {likeAnswer} your profile" },
+                        {"TargetUserId", $"{SelectedUser.Id}" }
+                };
+
+                NoticeModel noticeModel = new NoticeModel()
+                {
+                    CurrentUserId = CurrentUser.Id,
+
+                    CurrentUserName = CurrentUser.Name,
+
+                    Context = $"{DateTime.Now.ToString("d")}:  {CurrentUser.Name} {likeAnswer} your profile",
+
+                    TargetUserId = SelectedUser.Id
+                };
+
+                await userRepository.AddNoticeAsync(noticeModel);
+
+                //var response2 = await Sender.PostAsync(content2, $"{Configuration["UserService"]}/api/user/notices/add");
+
+                return Redirect($"/userprofile/{SelectedUser.Id}");
+            }
+
+            if (IsSubscribe)
+            {
+                // Dictionary<string, string> content = new Dictionary<string, string>()
+                // {
+                //     {"CurrentUserName", $"{CurrentUser.Name}" },
+                //     {"CurrentUserId", $"{CurrentUser.Id}" },
+                //     {"TargetUserId", $"{SelectedUser.Id}" }
+                // };
+
+                // var response = await Sender.PostAsync(content, $"{Configuration["UserService"]}/api/user/subscribers/add");
+
+                SubModel subModel = new SubModel()
+                {
+                    CurrentUserName = CurrentUser.Name,
+
+                    CurrentUserId = CurrentUser.Id,
+
+                    TargetUserId = SelectedUser.Id
+                };
+
+                await userRepository.AddSubscriberAsync(subModel);
+
+                string subAnswer = string.Empty;
+
+                if (SelectedUser.Subscribers.Where(s=>s.SubId == CurrentUser.Id).Count() == 0)
+                {
+                    subAnswer = "subscribe on";
+                }
+                else
+                {
+                    subAnswer = "unscribe from";
+                }
+
+                // Dictionary<string, string> content2 = new Dictionary<string, string>()
+                // {
+                //      {"CurrentUserId", $"{CurrentUser.Id}" },
+                //      {"CurrentUserName", $"{CurrentUser.Name}" },
+                //      {"Context", $"{DateTime.Now.ToString("d")}:  {CurrentUser.Name} {subAnswer} You" },
+                //      {"TargetUserId", $"{SelectedUser.Id}" }
+                // };
+
+                // var response2 = await Sender.PostAsync(content2, $"{Configuration["UserService"]}/api/user/notices/add");
+
+                // if (response.IsSuccessStatusCode)
+                // {
+                //     return Redirect($"/profile/{SelectedUser.Id}");
+                // }
+
+                NoticeModel noticeModel = new NoticeModel()
+                {
+                    CurrentUserId = CurrentUser.Id,
+
+                    CurrentUserName = CurrentUser.Name,
+
+                    Context = $"{DateTime.Now.ToString("d")}:  {CurrentUser.Name} {subAnswer} your profile",
+
+                    TargetUserId = SelectedUser.Id
+                };
+
+                await userRepository.AddNoticeAsync(noticeModel);
+
+                return Redirect($"/userprofile/{SelectedUser.Id}");
+            }
+
+            return Page();
+        }
+    }
+}

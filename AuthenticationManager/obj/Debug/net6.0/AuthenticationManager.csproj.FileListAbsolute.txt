@@ -1,0 +1,12 @@
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\bin\Debug\net6.0\AuthenticationManager.deps.json
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\bin\Debug\net6.0\AuthenticationManager.dll
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\bin\Debug\net6.0\AuthenticationManager.pdb
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\obj\Debug\net6.0\AuthenticationManager.csproj.AssemblyReference.cache
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\obj\Debug\net6.0\AuthenticationManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\obj\Debug\net6.0\AuthenticationManager.AssemblyInfoInputs.cache
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\obj\Debug\net6.0\AuthenticationManager.AssemblyInfo.cs
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\obj\Debug\net6.0\AuthenticationManager.csproj.CoreCompileInputs.cache
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\obj\Debug\net6.0\AuthenticationManager.dll
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\obj\Debug\net6.0\refint\AuthenticationManager.dll
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\obj\Debug\net6.0\AuthenticationManager.pdb
+D:\MyUpgradedMessanger\Messanger\AuthenticationManager\obj\Debug\net6.0\ref\AuthenticationManager.dll

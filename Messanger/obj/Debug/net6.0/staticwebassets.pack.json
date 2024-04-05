@@ -1,0 +1,325 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\UserImages\\surmanidzedenis609@gmail.com\\me.jpg",
+      "PackagePath": "staticwebassets\\UserImages\\surmanidzedenis609@gmail.com\\me.jpg"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\UserImages\\surmanidzedenis609@gmail.com\\Без имени.png",
+      "PackagePath": "staticwebassets\\UserImages\\surmanidzedenis609@gmail.com\\Без имени.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\account\\account.css",
+      "PackagePath": "staticwebassets\\account\\account.css"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\account\\account.js",
+      "PackagePath": "staticwebassets\\account\\account.js"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\account\\account.min.css",
+      "PackagePath": "staticwebassets\\account\\account.min.css"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\chat\\chat.css",
+      "PackagePath": "staticwebassets\\chat\\chat.css"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\chat\\chat.js",
+      "PackagePath": "staticwebassets\\chat\\chat.js"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\chat\\invoker.js",
+      "PackagePath": "staticwebassets\\chat\\invoker.js"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\chat\\signalr.js",
+      "PackagePath": "staticwebassets\\chat\\signalr.js"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\chat\\signalr.js.map",
+      "PackagePath": "staticwebassets\\chat\\signalr.js.map"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\chat\\signalr.min.js",
+      "PackagePath": "staticwebassets\\chat\\signalr.min.js"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\chat\\signalr.min.js.map",
+      "PackagePath": "staticwebassets\\chat\\signalr.min.js.map"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\create\\createuser_script.js",
+      "PackagePath": "staticwebassets\\create\\createuser_script.js"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\create\\createuser_styles.css",
+      "PackagePath": "staticwebassets\\create\\createuser_styles.css"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\edit\\edit_script.js",
+      "PackagePath": "staticwebassets\\edit\\edit_script.js"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\edit\\edit_styles.css",
+      "PackagePath": "staticwebassets\\edit\\edit_styles.css"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\1486564399-close_81512.png",
+      "PackagePath": "staticwebassets\\images\\1486564399-close_81512.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\27230.jpg",
+      "PackagePath": "staticwebassets\\images\\27230.jpg"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\3721672-instagram_108066.png",
+      "PackagePath": "staticwebassets\\images\\3721672-instagram_108066.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\abstract-uv-ultraviolet-light-composition.jpg",
+      "PackagePath": "staticwebassets\\images\\abstract-uv-ultraviolet-light-composition.jpg"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\angle-left.svg",
+      "PackagePath": "staticwebassets\\images\\angle-left.svg"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\angle-right.svg",
+      "PackagePath": "staticwebassets\\images\\angle-right.svg"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\back.jpg",
+      "PackagePath": "staticwebassets\\images\\back.jpg"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\back2.jpg",
+      "PackagePath": "staticwebassets\\images\\back2.jpg"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\black-watercolor-background.jpg",
+      "PackagePath": "staticwebassets\\images\\black-watercolor-background.jpg"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\circle-user.svg",
+      "PackagePath": "staticwebassets\\images\\circle-user.svg"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\clouderror_icon-icons.com_54404.png",
+      "PackagePath": "staticwebassets\\images\\clouderror_icon-icons.com_54404.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\flat-style-circle-edit_icon-icons.com_66939.png",
+      "PackagePath": "staticwebassets\\images\\flat-style-circle-edit_icon-icons.com_66939.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-add-image-4211547.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-add-image-4211547.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-delete-1345874.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-delete-1345874.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-delete-5001199.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-delete-5001199.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-font-envelope-3916631.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-font-envelope-3916631.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-font-globe-3917538.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-font-globe-3917538.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-font-heart-3916579.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-font-heart-3916579.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-font-home-3917032.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-font-home-3917032.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-font-home-3917033.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-font-home-3917033.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-font-phone-call-5068731.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-font-phone-call-5068731.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-font-phone-call-5070407.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-font-phone-call-5070407.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-font-search-3917132.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-font-search-3917132.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-font-shopping-cart-3916598.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-font-shopping-cart-3916598.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-font-user-3917688.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-font-user-3917688.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-home-button-9073243.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-home-button-9073243.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-home-icon-silhouette-69524.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-home-icon-silhouette-69524.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-image-gallery-3342176.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-image-gallery-3342176.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-more-7543132.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-more-7543132.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\free-icon-settings-gear-icon-5859955.png",
+      "PackagePath": "staticwebassets\\images\\free-icon-settings-gear-icon-5859955.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\github_alt_macos_bigsur_icon_190138.png",
+      "PackagePath": "staticwebassets\\images\\github_alt_macos_bigsur_icon_190138.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\heart.svg",
+      "PackagePath": "staticwebassets\\images\\heart.svg"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\heart_like_love_twitter_icon_127132.png",
+      "PackagePath": "staticwebassets\\images\\heart_like_love_twitter_icon_127132.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\hearts_heart_love_favorite_5565.png",
+      "PackagePath": "staticwebassets\\images\\hearts_heart_love_favorite_5565.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\internet_online_web_seo_website_icon_252541 (1).png",
+      "PackagePath": "staticwebassets\\images\\internet_online_web_seo_website_icon_252541 (1).png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\internet_online_web_seo_website_icon_252541.png",
+      "PackagePath": "staticwebassets\\images\\internet_online_web_seo_website_icon_252541.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\ios7-bell_icon-icons.com_50334.png",
+      "PackagePath": "staticwebassets\\images\\ios7-bell_icon-icons.com_50334.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\me.jpg",
+      "PackagePath": "staticwebassets\\images\\me.jpg"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\oops.png",
+      "PackagePath": "staticwebassets\\images\\oops.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\pngwing.com (6).png",
+      "PackagePath": "staticwebassets\\images\\pngwing.com (6).png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\pngwing.com (7).png",
+      "PackagePath": "staticwebassets\\images\\pngwing.com (7).png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\signout_106525.png",
+      "PackagePath": "staticwebassets\\images\\signout_106525.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\stock-mailpriorityhigh_103734.png",
+      "PackagePath": "staticwebassets\\images\\stock-mailpriorityhigh_103734.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\systemlogout_103399.png",
+      "PackagePath": "staticwebassets\\images\\systemlogout_103399.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\telegram_icon-icons.com_53603.png",
+      "PackagePath": "staticwebassets\\images\\telegram_icon-icons.com_53603.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\user.png",
+      "PackagePath": "staticwebassets\\images\\user.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\users_team_icon_176932.png",
+      "PackagePath": "staticwebassets\\images\\users_team_icon_176932.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\web_global_browser_online_connection_network_internet_icon_219384.png",
+      "PackagePath": "staticwebassets\\images\\web_global_browser_online_connection_network_internet_icon_219384.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\images\\whatsapp_socialnetwork_17360.png",
+      "PackagePath": "staticwebassets\\images\\whatsapp_socialnetwork_17360.png"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\login\\script.js",
+      "PackagePath": "staticwebassets\\login\\script.js"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\login\\styles.css",
+      "PackagePath": "staticwebassets\\login\\styles.css"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\message_list\\message_list.css",
+      "PackagePath": "staticwebassets\\message_list\\message_list.css"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\message_list\\message_list.js",
+      "PackagePath": "staticwebassets\\message_list\\message_list.js"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\profile\\profile.css",
+      "PackagePath": "staticwebassets\\profile\\profile.css"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\profile\\profile.js",
+      "PackagePath": "staticwebassets\\profile\\profile.js"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\statuscode.html",
+      "PackagePath": "staticwebassets\\statuscode.html"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\statuscode\\statuscode.css",
+      "PackagePath": "staticwebassets\\statuscode\\statuscode.css"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\statuscode\\statuscode.js",
+      "PackagePath": "staticwebassets\\statuscode\\statuscode.js"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\userlist\\users.css",
+      "PackagePath": "staticwebassets\\userlist\\users.css"
+    },
+    {
+      "Id": "D:\\MyUpgradedMessanger\\Messanger\\Messanger\\wwwroot\\userlist\\users.js",
+      "PackagePath": "staticwebassets\\userlist\\users.js"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Messanger.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Messanger.props",
+      "PackagePath": "build\\Messanger.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Messanger.props",
+      "PackagePath": "buildMultiTargeting\\Messanger.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Messanger.props",
+      "PackagePath": "buildTransitive\\Messanger.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

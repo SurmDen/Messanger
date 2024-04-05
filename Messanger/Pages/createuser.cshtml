@@ -1,0 +1,178 @@
+﻿@page "/createuser"
+@model CreateUserModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create account</title>
+    <link rel="stylesheet" href="~/create/createuser_styles.css">
+    <link rel="shortcut icon" href="~/images/user.png" type="image/png">
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="header">
+                <div class="article">
+                    <img src="~/images/circle-user.svg">
+                </div>
+                @if (Model.ValidEmail)
+                {
+                    <div style="color:#f06a6a; font-size:25px; font-weight:700">
+                        Invalid email address!
+                    </div>
+                }
+            </div>
+            <div class="data">
+                <form asp-page="createuser" method="post">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" asp-for="Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Your email address</label>
+                        <input class="email" type="text" asp-for="Email">
+                    </div>
+                    <div class="form-group code-hider">
+                        <label>insert code from gmail</label>
+                        <input class="code" type="number" asp-for="Code" >
+                    </div>
+                    <div class="form-group">
+                        <label>Your password</label>
+                        <input type="password" asp-for="Password">
+                    </div>
+                    <div class="form-group">
+                        <label>Your age</label>
+                        <input type="text" asp-for="Age">
+                    </div>
+                    <div class="form-group">
+                        <label>Your country</label>
+                        <input type="text" asp-for="City">
+                    </div>
+                    @if (Model.CodeSend)
+                    {
+                        <div class="btn">
+                            <button id="sender" type="submit">create</button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="btn">
+                            <button id="sender" type="submit">get code</button>
+                        </div>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/create/createuser_script.js"></script>
+</body>
+</html>
+
+@functions{
+    public class CreateUserModel : PageModel
+    {
+        IUserRepository userRepository;
+
+        public CreateUserModel(IConfiguration configuration, IUserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; set; }
+
+        [BindProperty]
+        public string Name { get; set; }
+
+        [BindProperty]
+        public string Email { get; set; }
+
+        [BindProperty]
+        public string Password { get; set; }
+
+        [BindProperty]
+        public string City { get; set; }
+
+        [BindProperty]
+        public string Age { get; set; }
+
+        [BindProperty]
+        public int Code { get; set; } = 0;
+
+        [BindProperty]
+        public bool CodeSend { get; set; } = false;
+
+        [BindProperty]
+        public bool ValidEmail { get; set; }
+
+        public int RandomCode { get; set; }
+
+        public IActionResult OnGet()
+        {
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (Code == 0)
+            {
+                Random random = new Random();
+
+                RandomCode = random.Next(1000, 9999);
+
+                HttpContext.Response.Cookies.Append("code", RandomCode.ToString());
+
+                await EmailService.SendEmailAsync(Email, RandomCode);
+
+                CodeSend = true;
+
+                return Page();
+            }
+
+            if (Code == int.Parse(HttpContext.Request.Cookies["code"]))
+            {
+                HttpContext.Response.Cookies.Delete("code");
+
+                User user = new User()
+                {
+                    Name = Name,
+
+                    Email = Email,
+
+                    Password = Password,
+
+                    City = City,
+
+                    Age = int.Parse(Age)
+                };
+
+                // Dictionary<string, string> content = new Dictionary<string, string>()
+                // {
+                //     {"Name", Name },
+                //     {"Email", Email },
+                //     {"Password",Password  },
+                //     {"City", City },
+                //     {"Age", Age }
+                // };
+
+                // var response = await Sender.PostAsync(content, $"{Configuration["UserService"]}/api/user/create");
+
+                // if (response.IsSuccessStatusCode)
+                // {
+                //     return Redirect("messanger/login");
+                // }
+
+                await userRepository.CreateUserAsync(user);
+            }
+
+            ValidEmail = true;
+            CodeSend = false;
+
+            return Page();
+        }
+    }
+}

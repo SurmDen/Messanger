@@ -1,0 +1,11 @@
+D:\MyUpgradedMessanger\Messanger\UserManager\bin\Debug\net6.0\UserManager.deps.json
+D:\MyUpgradedMessanger\Messanger\UserManager\bin\Debug\net6.0\UserManager.dll
+D:\MyUpgradedMessanger\Messanger\UserManager\bin\Debug\net6.0\UserManager.pdb
+D:\MyUpgradedMessanger\Messanger\UserManager\obj\Debug\net6.0\UserManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyUpgradedMessanger\Messanger\UserManager\obj\Debug\net6.0\UserManager.AssemblyInfoInputs.cache
+D:\MyUpgradedMessanger\Messanger\UserManager\obj\Debug\net6.0\UserManager.AssemblyInfo.cs
+D:\MyUpgradedMessanger\Messanger\UserManager\obj\Debug\net6.0\UserManager.csproj.CoreCompileInputs.cache
+D:\MyUpgradedMessanger\Messanger\UserManager\obj\Debug\net6.0\UserManager.dll
+D:\MyUpgradedMessanger\Messanger\UserManager\obj\Debug\net6.0\refint\UserManager.dll
+D:\MyUpgradedMessanger\Messanger\UserManager\obj\Debug\net6.0\UserManager.pdb
+D:\MyUpgradedMessanger\Messanger\UserManager\obj\Debug\net6.0\ref\UserManager.dll

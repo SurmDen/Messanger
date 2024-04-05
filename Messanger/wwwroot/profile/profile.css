@@ -1,0 +1,307 @@
+body{
+    background-image: url(../images/back.jpg);
+    background-attachment: fixed;
+    position: relative;
+}
+
+header{
+    width: 100%;
+}
+
+.container{
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.slider{
+    border: 2px solid white;
+    width: 20%;
+    box-shadow: 0 0 10px white;
+    overflow: hidden;
+    position: relative;
+}
+
+.sliderline{
+    display: flex;
+    transition: 1s;
+    position: absolute;
+}
+
+.slider-elem{
+    
+    height: auto;
+}
+
+header{
+    margin-top: 0;
+    padding-bottom: 20px;
+}
+
+.topbar{
+    width: 100%;
+    height: auto;
+    background-color: rgb(72, 103, 102);
+    margin-bottom: 20px;
+    border: 2px solid rgb(21, 21, 21);
+    box-shadow: 0 0 10px rgb(13, 13, 13);
+    box-sizing: border-box;
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.actions{
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+}
+
+.sub-form{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-btn{
+    height: auto;
+    text-align: center;
+    border: 2px solid white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    background: none;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.active-button{
+    background-color: rgb(35, 33, 33);
+    box-shadow: 0 0 15px white;
+}
+
+.r-nav{
+    position: absolute;
+    right: 0;
+    width: 15%;
+    height: 100%;
+    opacity: 0;
+    background-color: rgb(58, 56, 56);
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.l-nav{
+    position: absolute;
+    left: 0;
+    width: 15%;
+    height: 100%;
+    opacity: 0;
+    background-color: rgb(58, 56, 56);
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-box{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0.95;
+    background-color: rgb(53, 46, 46);
+    z-index: 5;
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 200px;
+}
+
+.error-menu{
+    width: 300px;
+    height: 200px;
+    border: 3px solid white;
+    box-shadow: 0 0 10px white;
+    background-color: rgb(107, 164, 163);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2em;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+    margin-bottom: 10px;
+}
+
+.error-btn{
+
+    font-size: 1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 3px solid white;
+    background-color: rgb(58, 56, 56);
+    color: aliceblue;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.error-btn:hover{
+    box-shadow: 0 0 12px;
+    background-color: rgb(35, 33, 33);
+}
+
+.error-message{
+    word-break:keep-all;
+    text-align: center;
+}
+
+.gallery{
+
+    margin: 20px;
+}
+
+.gallery .title{
+    width: auto;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2.5em;
+    color: aliceblue;
+    font-style: italic;
+}
+
+.gallery .photos{
+    display: grid;
+    grid-template-columns: 210px 210px 210px;
+    grid-area: auto;
+    padding: 0;
+}
+
+.photos img{
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    border: 3px solid white;
+}
+
+.gallery-img:hover{
+
+    box-shadow: 0 0 15px white;
+}
+
+.image-box{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(53, 46, 46);
+    z-index: 5;
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    opacity: 0.95;
+}
+
+.large-img{
+    margin-top: 90px;
+    width: 40%;
+    height: auto;
+    border: 2px solid white;
+}
+
+.closer{
+    text-align: center;
+    padding: 3px;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.5em;
+    background-color: rgb(53, 46, 46);
+    width: 110px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.closer:hover{
+    box-shadow: 0 0 15px white;
+    background-color: rgb(21, 21, 21);
+}
+
+.like-button{
+    outline: none;
+    width: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 7px;
+    background: none;
+    border-width:0;
+    cursor:pointer;
+}
+
+.like-button img{
+    width: 50px;
+    height: 50px;
+    cursor:pointer;
+}
+
+.m-btn{
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    font-size: 25px;
+    border: 2px solid white;
+    padding: 3px;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.active-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.ref-home{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.ref-home img{
+    width: 52px;
+    height: 52px;
+}
+
+.user-data{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.name{
+    margin-right: 10px;
+}
+
+
+

@@ -1,0 +1,135 @@
+﻿@page "/login"
+@model loginModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>sign in</title>
+    <link rel="stylesheet" href="~/login/styles.css" />
+    <link rel="shortcut icon" href="~/images/free-icon-font-user-3917688.png" type="image/png">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="header">
+                <div class="user-icon">
+                    <img src="~/images/circle-user.svg" alt="">
+                </div>
+                @if (Model.IsError)
+                {
+                    <div style="color:#f06a6a; font-size:25px; font-weight:700">
+                        Invalid sign in data
+                    </div>
+                }
+            </div>
+            <div class="login">
+                <form asp-page="login" method="post">
+                    <div class="form-group">
+                        <label>Insert Name</label>
+                        <input class="name-input" type="text" asp-for="Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Insert Password</label>
+                        <input class="pass-input" type="password" asp-for="Password">
+                    </div>
+                    <div class="btn">
+                        <button type="submit">Send</button>
+                    </div>
+                    <div class="form-group" style="justify-content:center; align-items: center">
+                        <div>
+                            You are unuthorized?
+                        </div>
+                        <a class="redirect" href="/createuser">create new</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/login/script.js"></script>
+</body>
+</html>
+
+
+@functions{
+
+    public class loginModel : PageModel
+    {
+        ITokenService tokenService;
+
+        IUserRepository userRepository;
+
+        public IConfiguration Configuration { get; set; }
+
+        public loginModel(IConfiguration configuration, IUserRepository userRepository, ITokenService tokenService)
+        {
+            this.userRepository = userRepository;
+
+            Configuration = configuration;
+
+            this.tokenService = tokenService;
+        }
+
+        [BindProperty]
+        public string Name { get; set; }
+
+        [BindProperty]
+        public string Password { get; set; }
+
+        public bool IsError { get; set; } = false;
+
+        public IActionResult OnGet()
+        {
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+
+            LoginModel login = new LoginModel()
+            {
+                Name = Name,
+                Password = Password
+            };
+
+            // Dictionary<string, string> content = new Dictionary<string, string>()
+            // {
+            //     {"Name", login.Name },
+            //     {"Password", login.Password }
+            // };
+
+            // var response = await Sender.PostAsync(content, $"{Configuration["UserService"]}/api/user/login");
+
+            IsError = false;
+
+            // string token = await response.Content.ReadAsStringAsync();
+
+            User user = await userRepository.GetUserByNameAndPasswordAsync(login);
+
+            if (user != null)
+            {
+                TokenModel tokenModel = new TokenModel
+                {
+                        Name = user.Name,
+                        Email = user.Email,
+                        Role = user.Role
+                };
+
+                string token = tokenService.CreateJwtToken(tokenModel);
+
+                HttpContext.Response.Cookies.Append("token", token);
+
+                return Redirect("/account");
+            }
+            else
+            {
+                IsError = true;
+
+                return Page();
+            }
+
+        }
+    }
+
+}

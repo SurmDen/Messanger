@@ -1,0 +1,361 @@
+﻿@page "/account"
+@model Account
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>your profile</title>
+        <link href="~/account/account.css" rel="stylesheet"/>
+        <link rel="shortcut icon" href="~/images/free-icon-home-icon-silhouette-69524.png" type="image/png">
+    </head>
+    <body>
+        <div class="link-container">
+            <div class="link-box">
+                <img class="link-closer" src="~/images/systemlogout_103399.png" alt="">
+                <span style=" margin-bottom:15px; color:white; font-size:30px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">For all questions ask</span>
+                <div class="link-description">
+                    <a class="link-data" href="https://www.instagram.com/surm_den/" target="_blank">
+                        <img src="~/images/3721672-instagram_108066.png" alt="">
+                        <span>my instagram</span>
+                    </a>
+                    <a class="link-data" target="_blank" href="https://t.me/surm_den">
+                        <img src="~/images/telegram_icon-icons.com_53603.png" alt="">
+                        <span>my telegram</span>
+                    </a>
+                    <a class="link-data">
+                        <img src="~/images/whatsapp_socialnetwork_17360.png" alt="">
+                        <span>+7 (995) 889-92-65</span>
+                    </a>
+                    <a class="link-data" target="_blank" href="https://github.com/SurmDen">
+                        <img src="~/images/github_alt_macos_bigsur_icon_190138.png" alt="">
+                        <span>open source code</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="info-container">
+            <div class="info-box">
+                <img class="info-closer" src="~/images/systemlogout_103399.png" alt="">
+                <img class="developer" src="~/images/me.jpg" alt="">
+                <div class="info-description">
+                    <ul>
+                        <li>
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate et at omnis nam consequuntur labore fugiat error perferendis beatae! Reiciendis voluptas deserunt officiis recusandae corporis expedita! Odit magni accusantium rem.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate et at omnis nam consequuntur labore fugiat error perferendis beatae! Reiciendis voluptas deserunt officiis recusandae corporis expedita! Odit magni accusantium rem.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate et at omnis nam consequuntur labore fugiat error perferendis beatae! Reiciendis voluptas deserunt officiis recusandae corporis expedita! Odit magni accusantium rem.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate et at omnis nam consequuntur labore fugiat error perferendis beatae! Reiciendis voluptas deserunt officiis recusandae corporis expedita! Odit magni accusantium rem.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate et at omnis nam consequuntur labore fugiat error perferendis beatae! Reiciendis voluptas deserunt officiis recusandae corporis expedita! Odit magni accusantium rem.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="image-box">
+            <button class="closer">close</button>
+            <img class="full-image large-img" alt="">
+        </div>
+        <div class="notify-box">
+            <div class="notify-pannel">
+                <form asp-page="account" method="post">
+                    <input type="hidden" asp-for="IsSeen" value="true" />
+                    <button class="note-closer" type="submit">
+                        <img class="note-closer" src="~/images/systemlogout_103399.png" alt="">
+                    </button>
+                </form>
+                @if (Model.CurrentUser.Notices.Count() != 0)
+                {
+                    foreach (Notice notice in Model.CurrentUser.Notices)
+                    {
+                        <a style="color:aliceblue; text-decoration:none" href="/profile/@notice.NotifyerId">
+                            <div class="note">@notice.Context</div>
+                        </a>
+                    }
+                }
+                else
+                {
+                    <h1 style="text-align:center; color:aliceblue">
+                        empty
+                    </h1>
+                }
+            </div>
+        </div>
+        <header>
+            <div class="topbar">
+            <a class="exit-href" href="/login"><img src="~/images/signout_106525.png" /></a>
+                <div class="hrefs">
+                    <a href="/userlist">
+                        <img src="~/images/users_team_icon_176932.png" alt="">
+
+                    </a>
+                    <a href="#" class="note-open scroller">
+                        <img src="~/images/ios7-bell_icon-icons.com_50334.png" alt="">
+                        @if (Model.CurrentUser.Notices.Count() != 0)
+                        {
+                            <div class="note-counter">
+                                @(Model.CurrentUser.Notices.Count() - Model.CurrentUser.LastSeenNoticesCount)
+                            </div>
+                        }
+                    </a>
+                </div>
+            </div>
+            <div class="container">
+
+                <div class="slider">
+
+                    <div class="sliderline">
+                        @if (Model.CurrentUser.Photos.Count() != 0)
+                        {
+                            foreach (Photo photo in Model.CurrentUser.Photos)
+                            {
+                                <form class="help-block" asp-page="account" method="post">
+                                    <img src="@photo.Path" class="slider-elem" alt="image not loaded">
+                                    <input type="hidden" asp-for="PhotoId" value="@photo.Id" />
+                                    <input type="hidden" asp-for="PhotoPath" value="@photo.Path" />
+                                    <div class="options"><img src="~/images/free-icon-more-7543132.png" alt=""></div>
+                                    <button type="submit" class="img-remove"><img src="~/images/free-icon-delete-1345874.png" alt=""></button>
+                                </form>
+                            }
+                        }
+                        else
+                        {
+
+                            <img src="~/images/free-icon-add-image-4211547.png" class="slider-elem" />
+                        }
+                    </div>
+
+                    <div class="r-nav">
+                        <img src="~/images/angle-right.svg" alt="">
+                    </div>
+                    <div class="l-nav">
+                        <img src="~/images/angle-left.svg" alt="">
+                    </div>
+
+
+                </div>
+                <form asp-page="account" class="img-form" method="post" enctype="multipart/form-data">
+                    <div class="file-input">
+                        new image
+                        <input asp-for="Image" type="file" class="choose-btn">
+                    </div>
+                    <button class="image-sender" type="submit">add</button>
+                </form>
+
+                <div style="display:flex; font-size:1.5em; margin-bottom:10px; margin-top:10px">
+                    <div style="margin-right:7px;">@Model.CurrentUser.Name</div>
+                    <div>@Model.CurrentUser.Age</div>
+                </div>
+                <div style="font-size: 1.5em; font-style:italic">@Model.CurrentUser.Email</div>
+            </div>
+        </header>
+        <section>
+            <div class="main-menu">
+                <a href="/friendlist">
+                    <img src="~/images/free-icon-font-user-3917688.png" alt="">
+                    Subscribers
+                </a>
+                <a href="/messagelist/@Model.CurrentUser.Id">
+                    <img src="~/images/free-icon-font-envelope-3916631.png" alt="">
+                    Messages
+                </a>
+                <a href="/editprofile">
+                    <img src="~/images/free-icon-settings-gear-icon-5859955.png" alt="">
+                    Settings
+                </a>
+                <div class="show-info scroller">
+                    <img src="~/images/web_global_browser_online_connection_network_internet_icon_219384.png" alt="">
+                    Info
+                </div>
+                <div class="show-link scroller">
+                    <img src="~/images/free-icon-font-phone-call-5068731.png" alt="">
+                    Link
+                </div>
+            </div>
+            <div class="gallery">
+                <div class="title">
+                    gallery
+                </div>
+                <div class="photos">
+                    @if (Model.CurrentUser.Photos.Count() != 0)
+                    {
+                        foreach (Photo photo in Model.CurrentUser.Photos)
+                        {
+                            <img class="gallery-img" src='@photo.Path'>
+                        }
+                    }
+                    else
+                    {
+                        <img class="gallery-img" src="~/images/free-icon-image-gallery-3342176.png">
+                    }
+                </div>
+            </div>
+        </section>
+
+        <script src="~/account/account.js"></script>
+    </body>
+</html>
+
+@functions{
+    [Authorize]
+    public class Account : PageModel
+    {
+        IUserRepository userRepository;
+
+        IWebHostEnvironment environment;
+
+        public Account(IWebHostEnvironment environment, IConfiguration configuration, IUserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+            Configuration = configuration;
+            this.environment = environment;
+        }
+
+        public IConfiguration Configuration { get; set; }
+
+        [BindProperty]
+        public User CurrentUser { get; set; }
+
+        [BindProperty]
+        public IFormFile Image { get; set; }
+
+        [BindProperty]
+        public bool IsSeen { get; set; } = false;
+
+        [BindProperty]
+        public long PhotoId { get; set; } = 0;
+
+        [BindProperty]
+        public string PhotoPath { get; set; }
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            string Email = string.Empty;
+
+            string name = User.Identity.Name;
+
+            Email = User.FindFirst(ClaimTypes.Email).Value;
+
+            ClaimsUserModel claimsUserModel = new ClaimsUserModel()
+            {
+                Name = name,
+                Email = Email
+            };
+
+            CurrentUser = await userRepository.GetUserByNameAndEmailAsync(claimsUserModel);
+
+            TempData["user"] = JsonConvert.SerializeObject(CurrentUser).ToString();
+
+            return Page();
+
+            // Dictionary<string, string> content = new Dictionary<string, string>()
+            // {
+            //         {"Name", name },
+            //         {"Email", Email }
+            // };
+
+            // var answer = await Sender.PostAsync(content, $"{Configuration["UserService"]}/api/user/current/get");
+
+            // string jsonUser = await answer.Content.ReadAsStringAsync();
+
+            // CurrentUser = JsonConvert.DeserializeObject<User>(jsonUser);
+
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (PhotoId != 0)
+            {
+                // Dictionary<string, string> rmContent = new Dictionary<string, string>()
+                // {
+                //     {"id", PhotoId.ToString() }
+                // };
+
+                // await Sender.PostAsync(rmContent, $"{Configuration["UserService"]}/api/user/photos/delete");
+
+                await userRepository.RemovePhotoAsync(PhotoId);
+
+                System.IO.File.Delete($"{environment.WebRootPath}{PhotoPath}");
+
+                return Redirect("/account");
+            }
+
+            CurrentUser = JsonConvert.DeserializeObject<User>((string)TempData["user"]);
+
+            if (IsSeen)
+            {
+
+                //await Sender.GetAsync($"{Configuration["UserService"]}/api/user/notices/handle/user/{CurrentUser.Id}");
+
+                await userRepository.HandleNoticesAsync(CurrentUser.Id);
+
+                return Redirect("/account");
+            }
+
+            if (Image != null)
+            {
+                // if (!Image.FileName.ToLower().Contains("jpeg") || !Image.FileName.ToLower().Contains("png") || !Image.FileName.ToLower().Contains("webp"))
+                // {
+                //     return Page();
+                // }
+
+                string imageName = Image.FileName;
+
+                DirectoryInfo info = new DirectoryInfo($"{ environment.WebRootPath }/UserImages/{ CurrentUser.Email}");
+
+                if (!info.Exists)
+                {
+                    info.Create();
+                }
+
+                using (FileStream fs = new FileStream($"{environment.WebRootPath}/UserImages/{CurrentUser.Email}/{imageName}", FileMode.OpenOrCreate))
+                {
+                    await Image.CopyToAsync(fs);
+
+                }
+
+                // Dictionary<string, string> content = new Dictionary<string, string>()
+                // {
+                //     {"CurrentUserId", CurrentUser.Id.ToString() },
+                //     {"Path", $"/UserImages/{CurrentUser.Email}/{imageName}"  }
+
+                // };
+
+                PhotoModel photoModel = new PhotoModel()
+                {
+                    CurrentUserId = CurrentUser.Id.ToString(),
+
+                    Path = $"/UserImages/{CurrentUser.Email}/{imageName}"
+                };
+
+                //var ans = await Sender.PostAsync(content, $"{Configuration["UserService"]}/api/user/photos/add");
+
+                await userRepository.AddPhotoAsync(photoModel);
+
+                return Redirect("/account");
+            }
+
+            return Redirect("/account");
+        }
+
+    }
+}

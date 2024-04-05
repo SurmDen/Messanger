@@ -1,0 +1,154 @@
+﻿@page "/chatroom/{id}"
+@model ChatRoom
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.SelectedUser.Name</title>
+    <link rel="stylesheet" href="~/chat/chat.css">
+    <link rel="shortcut icon" href="~/images/stock-mailpriorityhigh_103734.png" type="image/png">
+</head>
+<body>
+    <a class="a-home" href="/account"><img src="~/images/free-icon-home-button-9073243.png"/></a>
+    <div class="container">
+        <div class="chat-box">
+            <div class="user">
+                @if (Model.SelectedUser.Photos.Count() == 0)
+                {
+                    <img src="~/images/circle-user.svg" alt="">
+                }
+                else
+                {
+                    <img src="@Model.SelectedUser.Photos.First().Path" alt="">
+                }
+                <span>@Model.SelectedUser.Name</span>
+            </div>
+            <div id="scroller" class="window">
+                @if (Model.Dialog.Messages.Count() != 0)
+                {
+                    foreach (Message message in Model.Dialog.Messages)
+                    {
+                        if (message.UserName == Model.CurrentUser.Email)
+                        {
+                            <div class="current-message show">@message.Context</div>
+                        }
+                        else
+                        {
+                            <div class="user-message show">@message.Context</div>
+                        }
+                    }
+                }
+            </div>
+            <form method="post" asp-page="chatroom" class="send-pannel">
+                <textarea class="text-holder" asp-for="MessageContext"></textarea>
+                <input type="hidden" class="other" value="@Model.SelectedUser.Email"/>
+                <button type="submit" class="send-btn">OK</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/chat/signalr.js"></script>
+    <script src="~/chat/chat.js"></script>
+    <script src="~/chat/invoker.js"></script>
+
+</body>
+</html>
+
+@functions{
+    [Authorize]
+    public class ChatRoom : PageModel
+    {
+        public ChatRoom(IUserRepository userRepository, IDialogRepository dialogRepository)
+        {
+            this.userRepository = userRepository;
+
+            this.dialogRepository = dialogRepository;
+        }
+
+        private IUserRepository userRepository;
+
+        private IDialogRepository dialogRepository;
+
+        [BindProperty]
+        public User CurrentUser { get; set; }
+
+        [BindProperty]
+        public User SelectedUser { get; set; }
+
+        [BindProperty]
+        public string MessageContext { get; set; }
+
+        [BindProperty]
+        public Dialog Dialog { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(long id)
+        {
+            SelectedUser = await userRepository.GetUserByIdAsync(id);
+
+            string name = User.Identity.Name;
+
+            string email = User.FindFirst(ClaimTypes.Email).Value;
+
+            ClaimsUserModel model = new ClaimsUserModel
+            {
+                Name = name,
+                Email = email
+            };
+
+            CurrentUser = await userRepository.GetUserByNameAndEmailAsync(model);
+
+            DialogModel dialogModel = new DialogModel()
+            {
+                FirstEmail = CurrentUser.Email,
+                SecondEmail = SelectedUser.Email
+            };
+
+            Dialog = await dialogRepository.GetDialog(dialogModel);
+
+            if (Dialog == null)
+            {
+                Dialog = await dialogRepository.CreateDialog(dialogModel);
+                Dialog.Messages = new List<Message>();
+                Console.WriteLine(Dialog.ChatName+"  if null");
+            }
+
+            TempData["selected"] = JsonConvert.SerializeObject(SelectedUser);
+
+            TempData["current"] = JsonConvert.SerializeObject(CurrentUser);
+
+            TempData["dialog"] = Dialog.ChatName;
+
+            HttpContext.Response.Cookies.Append("clientEmail", SelectedUser.Email);
+
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            SelectedUser = JsonConvert.DeserializeObject<User>((string)TempData["selected"]);
+
+            CurrentUser = JsonConvert.DeserializeObject<User>((string)TempData["current"]);
+
+            Dialog = await dialogRepository.GetDialogByNameAsync((string)TempData["dialog"]);
+
+            if (!string.IsNullOrEmpty(MessageContext))
+            {
+                MessageModel messageModel = new MessageModel()
+                {
+                    UserName = CurrentUser.Email,
+                    Context = MessageContext,
+                    DialogId = Dialog.Id
+                };
+
+                await dialogRepository.SaveMessage(messageModel);
+
+                return Redirect($"/chatroom/{SelectedUser.Id}");
+            }
+
+            return Redirect($"/chatroom/{SelectedUser.Id}");
+        }
+    }
+}

@@ -1,0 +1,109 @@
+﻿@page "/messagelist/{id}"
+@model MessageList
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>messages</title>
+        <link rel="stylesheet" href="~/message_list/message_list.css">
+        <link rel="shortcut icon" href="~/images/free-icon-font-envelope-3916631.png" type="image/png">
+    </head>
+    <body>
+        <div class="container">
+            <div class="m-header">
+                <div class="title">
+                    messages
+                </div>
+                <a href="/account"><img class="home-img" src="~/images/free-icon-home-button-9073243.png"/></a>
+            </div>
+            @foreach (Dialog dialog in Model.Dialogs)
+            {
+                string currentEmail =  @Model.CurrentUser.Email;
+
+                string neededEmail = dialog.ChatName.Replace(currentEmail, "").Replace("_", "");
+
+                //string path = Model.Configuration["UserService"];
+
+                //string jsonNeededUser = await Sender.GetAsync($"{path}/api/user/get/mess/{neededEmail}");
+
+                //User neededUser;
+
+                //{
+            //neededUser = JsonConvert.DeserializeObject<User>(jsonNeededUser);
+            //}
+
+                User neededUser = await Model.userRepository.GetUserByEmailAsync(neededEmail);
+
+                <a class="message-box" href="/chatroom/@neededUser.Id">
+                    @if (neededUser.Photos.Count()!=0)
+                    {
+                        <img src="@neededUser.Photos.First().Path" alt="">
+                    }
+                    else
+                    {
+                        <img src="~/images/user.png" alt="">
+                    }
+                    <div class="message-group">
+                        <div class="user-name">
+                            @neededUser.Name
+                        </div>
+                        <div class="last-message">
+                            @if(dialog.Messages.Count() != 0){
+                                @dialog.Messages.Last().Context
+                            }
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+        <script src="~/message_list/message_list.js"></script>
+    </body>
+</html>
+
+@functions{
+    [Authorize]
+    public class MessageList : PageModel
+    {
+        public IUserRepository userRepository;
+
+        IDialogRepository dialogRepository;
+
+        public MessageList(IConfiguration configuration, IUserRepository userRepository, IDialogRepository dialogRepository)
+        {
+            Configuration = configuration;
+
+            this.userRepository = userRepository;
+
+            this.dialogRepository = dialogRepository;
+        }
+
+        public IConfiguration Configuration { get; set; }
+
+        [BindProperty]
+        public List<Dialog> Dialogs { get; set; } = new List<Dialog>();
+
+        [BindProperty]
+        public User CurrentUser { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(long id)
+        {
+
+            // string jsonDialogs = await Sender.GetAsync($"{Configuration["UserService"]}/api/dialog/get/{id}");
+
+            // Dialogs = JsonConvert.DeserializeObject<List<Dialog>>(jsonDialogs);
+
+            Dialogs = await dialogRepository.GetUserDialogsAsync(id);
+
+            // string jsonUser = await Sender.GetAsync($"{Configuration["UserService"]}/api/user/get/{id}");
+
+            // CurrentUser = JsonConvert.DeserializeObject<User>(jsonUser);
+
+            CurrentUser = await userRepository.GetUserByIdAsync(id);
+
+            return Page();
+        }
+    }
+}

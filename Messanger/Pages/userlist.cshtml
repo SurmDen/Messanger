@@ -1,0 +1,142 @@
+﻿@page "/userlist"
+@model UserList
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users</title>
+    <link rel="stylesheet" href="~/userlist/users.css">
+    <link rel="shortcut icon" href="~/images/users_team_icon_176932.png" type="image/png">
+</head>
+<body>
+    <div class="main">
+        <div class="search-box">
+            <div class="u-header">
+                Users
+            </div>
+            <div class="search-pannel">
+                <a href="/account"><img src="~/images/free-icon-home-button-9073243.png"/></a>
+                <form asp-page="userlist" id="selecter" class="elems">
+                    <div class="search-elem">
+                        <label>Name</label>
+                        <input asp-for="Name" class="name-selector" type="text">
+                    </div>
+                    <div class="search-elem">
+                        <label>City</label>
+                        <input asp-for="City" class="city-selector" type="text">
+                    </div>
+                    <div class="search-elem">
+                        <label>Age</label>
+                        <input asp-for="Age" class="age-selector" type="number">
+                    </div>
+                </form>
+                <button form="selecter" class="search-btn">select</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="user-box">
+                <div class="users">
+                    @foreach (User user in Model.Users.Where(u=>u.Email != User.FindFirst(ClaimTypes.Email).Value))
+                    {
+                    <a style="text-decoration:none; color:white" href="/userprofile/@user.Id">
+                        <div class="user">
+                            <div class="image-box">
+                                @if (user.Photos.Count() == 0)
+                                {
+                                    <img class="man" src="~/images/free-icon-font-user-3917688.png" alt="">
+                                }
+                                else
+                                {
+                                    <img class="man" src="@user.Photos.First().Path" alt="">
+                                }
+                            </div>
+                            <div class="data-box">
+                                <div class="sub-data-box">
+                                    <div class="name">@user.Name,</div>
+                                    <div class="age">@user.Age</div>
+                                </div>
+                                <div class="email">@user.City</div>
+                            </div>
+                        </div>
+                    </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/userlist/users.js"></script>
+</body>
+</html>
+
+@functions{
+
+    public class UserList : PageModel
+    {
+        IUserRepository userRepository;
+
+        public UserList(IConfiguration configuration, IUserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; set; }
+
+        [BindProperty]
+        public IEnumerable<User> Users { get; set; }
+
+        [BindProperty]
+        public string Name { get; set; }
+
+        [BindProperty]
+        public string City { get; set; }
+
+        [BindProperty]
+        public int Age { get; set; }
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+
+            // string jsonUsers = await Sender.GetAsync($"{Configuration["UserService"]}/api/user/users");
+
+            // Users = JsonConvert.DeserializeObject<List<User>>(jsonUsers);
+
+            Users = await userRepository.GetUsersAsync();
+
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            // string jsonUsers = await Sender.GetAsync($"{Configuration["UserService"]}/api/user/users");
+
+            // Users = JsonConvert.DeserializeObject<List<User>>(jsonUsers);
+
+            Users = await userRepository.GetUsersAsync();
+
+            if (!string.IsNullOrEmpty(Name))
+            {
+                Users = Users.Where(u => u.Name.ToLower().StartsWith(Name.ToLower()));
+            }
+
+            if (!string.IsNullOrEmpty(City))
+            {
+                Users = Users.Where(u => u.City.ToLower().StartsWith(City.ToLower()));
+            }
+
+            if (Age > 0)
+            {
+                Users = Users.Where(u => u.Age >= Age);
+            }
+
+            return Page();
+
+        }
+
+    }
+
+}

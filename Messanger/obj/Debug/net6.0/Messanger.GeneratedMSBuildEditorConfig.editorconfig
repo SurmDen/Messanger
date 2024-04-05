@@ -1,0 +1,57 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Messanger
+build_property.RootNamespace = Messanger
+build_property.ProjectDir = D:\MyUpgradedMessanger\Messanger\Messanger\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\MyUpgradedMessanger\Messanger\Messanger
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/MyUpgradedMessanger/Messanger/Messanger/Pages/account.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYWNjb3VudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyUpgradedMessanger/Messanger/Messanger/Pages/chat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY2hhdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyUpgradedMessanger/Messanger/Messanger/Pages/createuser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3JlYXRldXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyUpgradedMessanger/Messanger/Messanger/Pages/editprofile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcZWRpdHByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyUpgradedMessanger/Messanger/Messanger/Pages/friendlist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcZnJpZW5kbGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyUpgradedMessanger/Messanger/Messanger/Pages/login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcbG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyUpgradedMessanger/Messanger/Messanger/Pages/messagelist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcbWVzc2FnZWxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyUpgradedMessanger/Messanger/Messanger/Pages/profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyUpgradedMessanger/Messanger/Messanger/Pages/userlist.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdXNlcmxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/MyUpgradedMessanger/Messanger/Messanger/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
